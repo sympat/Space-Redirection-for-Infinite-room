@@ -1,4 +1,11 @@
 # Space Redirection for Infinite room
+<p align="center">
+  <img 
+    width="80%"
+    src="/Resources/teaser_thumbnail.png"
+  >
+</p>
+
 가상 현실에서의 탐험 기법은 여러 가지로 갈래로 나뉘어서 연구되고 있고 그 중 하나가 사용자의 실제 보행이 있습니다. 그러나, 가상과 실제 공간 차이로 인해 단순한 보행으로는 안전상 위험할 수 있고 사용자가 가상 현실에 몰입할 수 없다는 큰 단점이 존재합니다. 따라서, 사용자가 최대한 실제 공간과 충돌이 일어나지 않도록 가상 현실에서의 사용자의 보행을 미세하게 조정하는 방식 등이 연구되고 있습니다.
 
 이러한 맥락에서 출발하여, 본 프로젝트에서는 무수히 많은 방들로 구성된 가상 실내 환경을 change blindness 현상을 이용한 벽 이동을 통해 실제 환경에서의 충돌 없이 사용자가 걸어서 탐험하는 일반화된 알고리즘을 제시하였습니다. 구체적으로 해당 기법은 사용자가 보지 않고 있는 동안 방 안의 벽면을 이동시켜 방을 scale하고 translation 하여, 현재 사용자를 포함하고 있는 가상의 방이 유효한 실제 공간 내에 항상 존재하도록 만듭니다. 따라서, 기존 방법들과 다르게 이론상 실제 공간의 충돌이 전혀 발생하지 않는다는 장점을 가집니다.
@@ -23,3 +30,10 @@ Unity Hub 2.4+
 이런 가정 하에, 제안하는 알고리즘은 다음과 같다. Figure \ref{fig:algo_step}(a), \ref{fig:algo_step}(b), and line \ref{alg:step1} in Algorithm \ref{alg:nav}에 나타낸 것처럼, 해당 방법은 우선 사용자가 처음 시작할 방을 실제 공간 중심으로 이동시키고 해당 방에 이웃한 방들을 실제 공간 안쪽으로 압축하여 초기화한다.
 
 이후에 이 방법은 사용자가 새로운 방에 방문할 때마다 복원 후 압축 단계를 진행시킨다 (Figure \ref{fig:algo_step}(c) and line \ref{alg:step2} in Algorithm \ref{alg:nav}). 먼저 Figure \ref{fig:algo_step}(d) 와 line \ref{alg:step3-1},\ref{alg:step3-2} in Algorithm \ref{alg:nav}에서처럼 해당 방의 현재 dimension 에서 원래 dimension로 가는 scale과 해당 방의 현재 중심 위치에서 실제 공간 중심으로 가는 translation을 계산한다. 만약 계산된 scale이 $\mathbf{I}$ 가 아니거나 translate이 $\mathbf{0}$ 아니라면 복원 단계가 진행된다. 복원(Restore) 단계에서는 위에서 구한 scale 과 translation을 합쳐서 각 벽면이 이동해야 되는 위치를 먼저 계산한다 (line \ref{alg:step4} Algorithm \ref{alg:restore}). 이후 각 벽면이 해당 위치에 도달할 때 까지 Change blindness 현상을 이용하여 사용자 시야 밖 벽면들을 조금씩 이동하게 된다 (Figure \ref{fig:algo_step}(e) and line \ref{alg:step5} Algorithm \ref{alg:restore}). 복원이 완료되고 이후 압축(Compression) 단계에서는 복원된 방에 이웃한 방들을 실제 공간 안쪽으로 압축한다 (Figure \ref{fig:algo_step}(f) and line \ref{alg:step6} Algorithm \ref{alg:compression}). 그 결과, 이러한 복원-압축 단계의 반복으로 실제 공간 안에서 무수히 많은 방들이 서로 연결된 가상 공간을 탐험할 수 있게 된다.
+
+<p align="center">
+  <img 
+    width="100%"
+    src="/Resources/method.png"
+  >
+</p>
