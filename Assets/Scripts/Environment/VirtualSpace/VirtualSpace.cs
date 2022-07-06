@@ -51,11 +51,6 @@ public class VirtualSpace : Transform2D
 
             CloseConnectedDoors(currentRoom);
 
-            // List<Door> connectedDoors = GetConnectedDoors(currentRoom);
-
-            // foreach(var door in connectedDoors) 
-            //     door.CloseDoor();
-
             Debug.Log("Current Room is changed " + currentRoom);
         }
     }
@@ -149,9 +144,6 @@ public class VirtualSpace : Transform2D
 
     public void SwitchAllVisualization(bool isShow) {
         foreach(Transform child in this.transform) {
-            // if(child.gameObject.layer == LayerMask.NameToLayer("Player"))
-            //     continue;
-                
             child.gameObject.SetActive(isShow);
         }
     }
@@ -176,20 +168,6 @@ public class VirtualSpace : Transform2D
                 w1 = maxDoor.GetThisRoomWrapper(room).weight;
                 w2 = minDoor.GetThisRoomWrapper(room).weight;
 
-                // Debug.Log(room);
-                // Debug.Log($"maxDoor {maxDoor}");
-                // Debug.Log($"minDoor {minDoor}");
-                // Debug.Log($"l {l}");
-                // Debug.Log($"e {e}");
-                // Debug.Log($"max {max}");
-                // Debug.Log($"min {min}");
-                // Debug.Log($"w1 {w1}");
-                // Debug.Log($"w2 {w2}");
-                // Debug.Log(o + w1/2 * l + e);
-                // Debug.Log(maxDoor.Max.x);
-                // Debug.Log(o + w2/2 * l - e);
-                // Debug.Log(minDoor.Min.x);
-
                 if(wall == 3) {
                     translate1 = (o + w1 / 2 * l + e - max) / ((1 - w1) / 2);
                     translate2 = (o + w2 / 2 * l - e - min) / (- (1 + w2) / 2);
@@ -198,10 +176,6 @@ public class VirtualSpace : Transform2D
                     translate1 = (o + w1 / 2 * l + e - max) / (- (1 - w1) / 2);
                     translate2 = (o + w2 / 2 * l - e - min) / ((1 + w2) / 2);
                 }
-
-                // Debug.Log($"translate {translate}");
-                // Debug.Log($"fit to MaxDoor {translate1}");
-                // Debug.Log($"fit to MinDoor {translate2}");
 
                 float shrinkDirection = 0;
                 if(wall == 1) shrinkDirection = 1.0f;
@@ -224,16 +198,6 @@ public class VirtualSpace : Transform2D
                         finalTranslate = minLimitTranslate;
                     }
                 }
-
-
-                // finalTranslate = (Mathf.Abs(translate1) < Mathf.Abs(translate2)) ? translate1 : translate2;
-                // if(finalTranslate * translate < 0)
-                
-                //  finalTranslate = translate; // translate이 translate1,2 와 다른 방향일 경우 그냥 translate을 적용
-                // else if(Mathf.Abs(translate) < Mathf.Abs(finalTranslate)) finalTranslate = translate; // 같은 방향
-
-                // Debug.Log($"finalTranslate {finalTranslate}");
-
             }
             else {
                 finalTranslate = translate;
@@ -260,10 +224,6 @@ public class VirtualSpace : Transform2D
                     translate1 = (o + w1 / 2 * l + e - max) / (- (1 - w1) / 2);
                     translate2 = (o + w2 / 2 * l - e - min) / ((1 + w2) / 2);
                 }
-
-                // finalTranslate = (Mathf.Abs(translate1) < Mathf.Abs(translate2)) ? translate1 : translate2;
-                // if(finalTranslate * translate < 0) finalTranslate = translate;
-                // else if(Mathf.Abs(translate) < Mathf.Abs(finalTranslate)) finalTranslate = translate;
 
                 float shrinkDirection = 0;
                 if(wall == 2) shrinkDirection = 1.0f;
@@ -292,14 +252,6 @@ public class VirtualSpace : Transform2D
             }
         }
 
-        // if(room.ID == 5 && wall == 0)
-        // {
-        //     Debug.Log($"translate1 {translate1}");
-        //     Debug.Log($"translate2 {translate2}");
-        //     Debug.Log($"translate {translate}");
-        //     Debug.Log($"finalTranslate {finalTranslate}");
-        // }
-
         MoveWall(room, wall, finalTranslate, rootRoom);
     }
 
@@ -311,15 +263,6 @@ public class VirtualSpace : Transform2D
         room.MoveEdge(wall, translate); // 현재 방의 wall을 이동시킨다
         PlaceAllDoorAndRoom(room, rootRoom); 
     }
-
-    // public void MoveWall(Room room, int wall, Vector2 translate, Room rootRoom = null) {
-    //     if (GetRoom(room) == null) return;
-
-    //     if(wall % 2 == 0)
-    //         MoveWall(room, wall, translate.y, rootRoom);
-    //     else
-    //         MoveWall(room, wall, translate.x, rootRoom);
-    // }
 
     public void MoveDoor(Room room, Door door, float translate, Room rootRoom = null)
     {
@@ -399,17 +342,6 @@ public class VirtualSpace : Transform2D
         if (GetRoom(v) == null) return null;
         return adjList[v];
     }
-
-    // public List<Door> GetDoorsInWall(Room v, int wall) {
-    //     List<Door> result = new List<Door>();
-
-    //     foreach(var door in adjList[v]) {
-    //         if(door.GetThisRoomWrapper(v).wall == wall)
-    //             result.Add(door);
-    //     }
-
-    //     return result;
-    // }
 
     // type 축으로 고정되어 있는 문들을 반환
     public List<Door> GetDoorsInDirection(Room v, Direction type) {

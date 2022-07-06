@@ -540,5 +540,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Experiment 1 Session
       objectReference: {fileID: 0}
+    - target: {fileID: 9049695237698680191, guid: f083f0a4990311946a0da9f808a0aa18,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f083f0a4990311946a0da9f808a0aa18, type: 3}
