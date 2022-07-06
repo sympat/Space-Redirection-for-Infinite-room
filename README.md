@@ -23,7 +23,7 @@
 * Asset/Scene 에는 VR 보행 훈련, 첫번째 실험, VR 내 상호작용이나 Teleport 기능 훈련, 두번째 실험이 준비되어 있습니다.
 * 기본 실행 옵션은 키보드 조작을 통해서 움직일 수 있는 non-VR 로 설정되어 있으며, VR을 사용할 경우 SteamVR로 호환되는 VR 기기 (Oculus Quest 2, HTC VIVE 등) 를 연결한 뒤에 사용하셔야 됩니다.
 
-# Structure
+# Class Diagram
 Unity의 Component로서 Object에 부착할 수 있는 클래스는 Environment, BaseRedirector, BaseResetter, BaseTask 로 4가지 입니다.
 
 ## Environment Module
@@ -89,7 +89,7 @@ Unity의 Component로서 Object에 부착할 수 있는 클래스는 Environment
 # Algorithm
 <p align="center">
   <img 
-    width="100%"
+    width="60%"
     src="/Resources/environment.png"
   >
 </p>
