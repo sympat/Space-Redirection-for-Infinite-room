@@ -27,33 +27,29 @@
 Unity의 Component로서 Object에 부착할 수 있는 클래스는 Environment, BaseRedirector, BaseResetter, BaseTask 로 4가지 입니다.
 
 ## Environment Module
--------------
 ### RealSpace
 직사각형 실제 공간을 나타내고 실제 유저의 위치와 방향을 나타내는 RealUser를 가집니다.
 ### Users
-각각 non-VR과 VR 사용자를 나타내는 User를 가지며, 실행 환경에 따라서 하나로 고정됩니다. VR 사용자의 경우 SteamVR의 일부 기능(Hand, Interactable 등)을 사용합니다. 
-User는 Head, Hand, Body를 구성요소로 가집니다. Head에 부착된 Camera로 가상 공간을 바라보고 Hand를 통해서 물체와 상호작용하며, Body로 움직입니다.
-User가 어떤 행위를 할 때마다 저장된 Callback 함수들을 실행하는 Observer 패턴 (Event)을 사용합니다. 
+각각 non-VR과 VR 사용자를 나타내는 User를 가지며, 실행 환경에 따라서 하나로 고정됩니다. VR 사용자의 경우 SteamVR의 일부 기능(Hand, Interactable 등)을 사용합니다.   
+User는 Head, Hand, Body를 구성요소로 가집니다. Head에 부착된 Camera로 가상 공간을 바라보고 Hand를 통해서 물체와 상호작용하며, Body로 움직입니다.   
+User가 어떤 행위를 할 때마다 저장된 Callback 함수들을 실행하는 Observer 패턴 (Event)을 사용합니다.
 ### VirtualSpace
 가상 공간을 나타내며 Room과 Door로 이루어져 있습니다. 내부적으로는 Room이 노드이고 Door가 엣지가 되는 그래프 형태로 구현됩니다.
 
 ## 2DGeometry Module
--------------
 ### Transform2D
-Transform2D를 통해서 어떤 물체의 외곽선을 2차원 형태로 나타내고 이것의 위치, 회전, 스케일 값을 관리합니다.
-두 개의 Transform2D 사이의 관계(겹쳐있는지, 포함되는지 등)를 판단합니다.
+Transform2D를 통해서 어떤 물체의 외곽선을 2차원 형태로 나타내고 이것의 위치, 회전, 스케일 값을 관리합니다.   
+두 개의 Transform2D 사이의 관계(겹쳐있는지, 포함되는지 등)를 판단합니다.   
 Circle2D, Rectangle2D는 Transform2D을 상속 받으며 각각 2차원 상에서 원과 직사각형을 나타냅니다.
 
 ## User Interface Module
--------------
 ### UIManager 
 애플리케이션 실행 도중 사용되는 모든 User Interface들을 관리합니다.
 ### UICanvas
 User Interface를 담을 수 있는 컨테이너이며 UIManager는 UICanvas 단위로 관리하고 추적합니다.
 ### UIBase
-User Interface를 나타내는 최소 단위(Button, Text, Image 등)입니다.
+User Interface를 나타내는 최소 단위(Button, Text, Image 등)입니다.   
 User Interface와 상호작용할 때마다 저장된 Callback 함수들을 실행하는 Observer 패턴 (Event)을 사용합니다. 
-
 
 <p align="center">
   <img 
@@ -70,16 +66,16 @@ User Interface와 상호작용할 때마다 저장된 Callback 함수들을 실�
 사용자가 실제 공간의 중심으로 유도되도록 사용자의 경로를 왜곡하는 방식을 구현합니다.
 
 ## Resetter Module
-시뮬레이션에 적용할 Reset 기법을 결정합니다.
-BaseResetter는 BaseTask를 상속받으며, 사용자가 실제 공간 바깥으로 나갈 때마다 사용자를 안쪽으로 재조정하는 Task를 추가합니다.  
+시뮬레이션에 적용할 Reset 기법을 결정합니다.   
+BaseResetter는 BaseTask를 상속받으며, 사용자가 실제 공간 바깥으로 나갈 때마다 사용자를 안쪽으로 재조정하는 Task를 추가합니다.     
 하위 객체로는 얼만큼 재조정 할지에 따라서 CenterTurnResetter, TwoOneTurnResetter 를 가지고 있습니다.
 
 ## Task Module
 ### FiniteStateMachine (FSM)
-추상 기계 모델 중 하나인 Finite State Machine 을 구현합니다.
+추상 기계 모델 중 하나인 Finite State Machine 을 구현합니다.   
 유한 개의 State를 가지며 Input이 들어올때마다 특정 State로 전이하는 Transition으로 이루어집니다. 
 ### BaseTask
-실험의 시작부터 끝까지의 진행 과정을 FSM 형태로 나타내고 관리합니다.
+실험의 시작부터 끝까지의 진행 과정을 FSM 형태로 나타내고 관리합니다.   
 사용자가 어떤 행위를 할 때마다 이것을 전달받아서 FSM의 Input으로 사용하여 Task를 진행시킵니다.
 
 
