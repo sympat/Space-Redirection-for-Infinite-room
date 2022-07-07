@@ -283,7 +283,6 @@ public class SpaceRedirector : BaseRedirector
     }
 
     public void SwitchEnable() {
-        Debug.Log("SwitchEnable");
         this.enabled = !this.enabled;
         isFirst = !isFirst; // coroutine 자체를 다시 실행시키는 방식으로도 대체 가능
         experiment2.isLocomotionDone = !this.enabled;
@@ -294,8 +293,6 @@ public class SpaceRedirector : BaseRedirector
         yield return new WaitForSeconds(1.0f);
 
         while(true) {
-            Debug.Log("MyFixedUpdate");
-
             User user = users.GetActiveUser();
             Room currentRoom = virtualEnvironment.CurrentRoom;
 
@@ -314,8 +311,6 @@ public class SpaceRedirector : BaseRedirector
             else // 축소 연산
             {
                 if(isFirst) {
-                    Debug.Log("Compression");
-                    
                     List<Room> neighborRooms = virtualEnvironment.GetConnectedRooms(currentRoom);
                     foreach (var room in neighborRooms)
                     {

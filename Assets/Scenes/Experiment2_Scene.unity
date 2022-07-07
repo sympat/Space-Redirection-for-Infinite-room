@@ -2348,6 +2348,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1565112435191472488, guid: 0cbed40c0ab211148988c821cfa02291,
+        type: 3}
+      propertyPath: useFullVisualization
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7081750091946417995, guid: 0cbed40c0ab211148988c821cfa02291,
         type: 3}
       propertyPath: m_Mesh
@@ -2387,6 +2392,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2083562096431454716, guid: 6327093e7c3f8904f8f32602274d44d8,
+        type: 3}
+      propertyPath: useFullVisualization
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2083562096581282715, guid: 6327093e7c3f8904f8f32602274d44d8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2580,6 +2590,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Teleport Session
+      objectReference: {fileID: 0}
+    - target: {fileID: 7321028255753415712, guid: dca5d0c4c375e5b42bdbc7ad6f24687b,
+        type: 3}
+      propertyPath: useFullVisualization
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dca5d0c4c375e5b42bdbc7ad6f24687b, type: 3}

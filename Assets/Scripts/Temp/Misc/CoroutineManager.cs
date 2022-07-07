@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class CoroutineManager : Singleton<CoroutineManager>
 {
-    private static bool m_Lock = false;
+    // private static bool m_Lock = false;
 
     public void CallWaitForOneFrame(UnityAction call) {
         StartCoroutine(DoCallWaitForOneFrame(call));
